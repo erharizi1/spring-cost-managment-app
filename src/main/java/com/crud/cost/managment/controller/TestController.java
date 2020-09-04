@@ -46,7 +46,7 @@ public class TestController {
 	
 	
 	@RequestMapping("/allprojects")
-    public List<Project> getAllEmployees() {
+    public List<Project> getAllProjects() {
 		List<Project> project = projectRepo.findAll();
         return project;
     }
