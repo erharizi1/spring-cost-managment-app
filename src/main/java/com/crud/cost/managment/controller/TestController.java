@@ -142,14 +142,16 @@ public class TestController {
 	}
 	
 	@GetMapping("/projects/get")
-	public Page<Project> getProjectPage(@RequestParam("page") int page, @RequestParam("size") int size) {
+	public Page<Project> getProjectPage(@RequestParam("page") int page, @RequestParam("size") int size, @RequestParam("userid") int userid) {
+		
+		
 		
 		//Sort sort = new Sort(new Sort.Order(Direction.ASC, "nom"));
 		Sort sort2 = Sort.by(Sort.Direction.ASC,"name");
 		Pageable pageable =  PageRequest.of(page, size, Sort.by(Sort.Direction.ASC,"name"));
 		
 		
-		return projectRepo.findAll(pageable);
+		return projectRepo.findByUserId(pageable, userid);
 		
 	}
 	

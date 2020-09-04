@@ -18,7 +18,11 @@ public interface ProjectRepository extends JpaRepository<Project, Long>{
 	
 	Project save(Project p);
 	Optional<Project> findById(Long id);
+	
 	Page<Project> findAll(Pageable pageable);
+	
+	@Query("SELECT p FROM Project p WHERE p.userId=:userId")
+	Page<Project> findByUserId(Pageable pageable, int userId);
 	
 //	@Query("SELECT p FROM Project p WHERE p.name=:name")
 //	Page<Project> findAllByName(String name ,Pageable pageable);
